@@ -1,3 +1,5 @@
+[中文文档](README_zh.md)
+
 # Proxmox Backup Server (PBS) Docker for ARM64
 
 This is a Proxmox Backup Server Docker image built specifically for **ARM64** architecture devices (such as Raspberry Pi, Orange Pi, etc.).
