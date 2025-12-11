@@ -8,7 +8,7 @@ This is a Proxmox Backup Server Docker image built specifically for **ARM64** ar
 
 *   **Architecture Limit**: This image only supports **ARM64** architecture; x86/amd64 platforms are not supported.
 *   **Feature Limit**: Supports core backup and restore functions. Since it runs inside a container, host **Disk Management** features are **not supported**.
-*   **Tested Environment**: Currently only tested on **Orange Pi 5 Plus**. Feedback on other devices is welcome.
+*   **Tested Environment**: Currently only tested on **Orange Pi 5 Plus** and **Raspberry Pi 5**. Feedback on other devices is welcome.
 
 ### 🍓 Special Note for Raspberry Pi 5
 
