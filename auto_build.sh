@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 set -euo pipefail
+source /etc/profile
+source ~/.bashrc
+export PATH=$PATH:/usr/local/bin
 
 # ================= Config Section / 配置区域 =================
 # Image name (including Docker Hub username) / 镜像名（包含 Docker Hub 用户名）
