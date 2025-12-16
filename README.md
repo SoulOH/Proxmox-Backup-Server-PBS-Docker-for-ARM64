@@ -4,24 +4,35 @@
 
 This is a Proxmox Backup Server Docker image built specifically for **ARM64** architecture devices (such as Raspberry Pi, Orange Pi, etc.).
 
-## ⚠️ Important Notes & Limitations
+## 📊 Compatibility & Test Report
 
-*   **Architecture Limit**: This image only supports **ARM64** architecture; x86/amd64 platforms are not supported.
-*   **Feature Limit**: Supports core backup and restore functions. Since it runs inside a container, host **Disk Management** features are **not supported**.
-*   **Tested Environment**: Currently only tested on **Orange Pi 5 Plus** and **Raspberry Pi 5**. Feedback on other devices is welcome.
+This image is built for ARM64 architecture. Due to differences in hardware and virtualization environments, some devices may require specific configurations.
+
+| Device / Environment | Status | Notes & Configuration |
+| :--- | :--- | :--- |
+| **Orange Pi 5 Plus** | ✅ Passed | Works out of the box. No modifications needed. |
+| **Raspberry Pi 5** | ⚠️ Passed | Kernel page size compatibility issue. **Configuration change required** (see solution below). |
+| **Pixel (Android 16)** | ⚠️ Passed | **Env**: Built-in Linux Terminal in Developer Mode (AVF).<br>**Note**: Access is limited to localhost (`127.0.0.1`) by default. For LAN access, a tool like **Port Forwarder** is required. |
+| **Android Termux** | ❌ Failed | `udocker` mode is not supported. |
+| **Android Termux** | ⏳ Pending | QEMU software emulation mode is untested. |
 
 ### 🍓 Special Note for Raspberry Pi 5
 
-For **Raspberry Pi 5** users, if you encounter a `400 Bad Request` error when accessing the service, this is caused by a kernel page size compatibility issue.
+If you encounter a `400 Bad Request` error on Raspberry Pi 5, please follow these steps:
 
-**Solution:**
-Please add an extra line of configuration to the end of the `/boot/firmware/config.txt` file on the host machine beforehand:
+1.  Edit the `/boot/firmware/config.txt` file on the host.
+2.  Add the following line to the end of the file:
+    ```ini
+    kernel=kernel8.img
+    ```
+3.  **Reboot the Raspberry Pi** for changes to take effect.
 
-```ini
-kernel=kernel8.img
-```
+---
 
-After adding this, please **reboot the Raspberry Pi** for the changes to take effect.
+## ⚠️ Other Limitations
+
+*   **Architecture**: Only supports **ARM64**. x86/amd64 is not supported.
+*   **Features**: Host **Disk Management** is not supported inside the container; only core backup/restore functions are available.
 
 ---
 
