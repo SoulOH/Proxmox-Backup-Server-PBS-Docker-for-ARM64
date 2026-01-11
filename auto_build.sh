@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
-set -euo pipefail
 source /etc/profile
 source ~/.bashrc
+set -euo pipefail
 export PATH=$PATH:/usr/local/bin
 
 # ================= Config Section / 配置区域 =================
